@@ -50,10 +50,10 @@ also gives users the following:
 
 There are two commercial editions of Teleport: 
 
-* **Teleport Pro** is for start-ups and small companies with up to 100 serers.
-  Users can sign up for Teleport Pro subscription [on our web site](https://gravitational.com/teleport/).
-  Teleport Pro sends the anonymized usage data to Gravitational (see below).
-  You can cancel your Teleport Pro subscription any time.
+* **Teleport Pro or Business** is for start-ups and smaller companies with up to 500 servers.
+  Users can sign up for a subscription [on our web site](https://gravitational.com/teleport/).
+  This editions send the anonymized usage data to Gravitational (see below).
+  Users can cancel Teleport Pro or Business subscription any time.
 
 * **Teleport Enterprise** works best for larger companies with 100+ servers and
   comes with substantial volume discounts. Teleport Enterprise does not send
