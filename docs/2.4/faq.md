@@ -32,8 +32,7 @@ and [Using OpenSSH servers](admin-guide.md) in the Admin Manual.
 
 ### Does Teleport support authentication via OAuth, SAML or Active Directory?
 
-Gravitational offers this feature as part of the commercial version for Teleport called
-[Teleport Enterprise](enterprise.md#rbac)
+Gravitational offers this feature for the [commercial versions of Teleport](enterprise.md#rbac).
 
 ## Commercial Teleport Editions
 
@@ -45,28 +44,27 @@ also gives users the following:
 
 * Role-based access control, also known as [RBAC](enterprise#rbac)
 * Authentication via SAML and OpenID with providers like Okta, Active Directory, Auth0, etc.
-* Commercial support.
-* Premium SLA with guaranteed response times.
+* Premium support.
 
 There are two commercial editions of Teleport: 
 
 * **Teleport Pro or Business** is for start-ups and smaller companies with up to 500 servers.
   Users can sign up for a subscription [on our web site](https://gravitational.com/teleport/).
-  This editions send the anonymized usage data to Gravitational (see below).
+  This editions sends anonymized usage data to Gravitational (see below).
   Users can cancel Teleport Pro or Business subscription any time.
 
-* **Teleport Enterprise** works best for larger companies with 100+ servers and
+* **Teleport Enterprise** works best for larger companies with 500+ servers and
   comes with substantial volume discounts. Teleport Enterprise does not send
   any usage data to Gravitaitonal and requires an annual contract.
 
-We also offer implementation Services, when our team can help you integrate
+We also offer implementation services, to help you integrate
 Teleport with your existing systems and processes.
 
 ### Does Teleport send any data to Gravitational?
 
 The open source edition of Teleport and Teleport Enterprise do not send any information
-to Gravitational and can be used on servers without internet access. _Teleport Pro_, our
-entry level commercial edition, sends the following anonymized information to
+to Gravitational and can be used on servers without internet access. _Teleport Pro and Business_, our
+entry level commercial editions, sends the following anonymized information to
 Gravitational on every login event, which contains:
 
 * Anonymized user ID: SHA256 hash of a username with a randomly generated prefix.
@@ -74,12 +72,13 @@ Gravitational on every login event, which contains:
 * Anonymized cluster ID: SHA256 hash of a cluster name with a randomly generated prefix.
 
 This allows Teleport Pro to print a warning if users are exceeding the usage limits
-encoded in their license. The reporting library code is [on Github](https://github.com/gravitational/reporting).
+of their license. The reporting library code is [on Github](https://github.com/gravitational/reporting).
 
-### Will Teleport stop working if my license expires?
+### Will Teleport stop working if my license expires or is exceeded?
 
 No. Teleport never stops working even if you exceed usage limits as set in the
-license.  Teleport will print a warning and will continue to work as usual.
+license.  Teleport will print a warning and will continue to work as usual but we will likely
+reach out to you to upgrade your license.
 
 Reach out to `sales@gravitational.com` if you have questions about commercial
 edition of Teleport.
