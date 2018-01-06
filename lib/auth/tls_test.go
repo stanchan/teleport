@@ -604,6 +604,52 @@ func (s *TLSSuite) TestGenerateCerts(c *check.C) {
 	c.Assert(err, check.IsNil)
 }
 
+//// TestCertificateFormat makes sure that certificates are generated with the
+//// correct format.
+//func (s *TLSSuite) TestCertificateFormat(c *check.C) {
+//	priv, pub, err := s.server.Auth().GenerateKeyPair("")
+//	c.Assert(err, check.IsNil)
+//
+//	// make sure we can parse the private and public key
+//	_, err = ssh.ParsePrivateKey(priv)
+//	c.Assert(err, check.IsNil)
+//	_, _, _, _, err = ssh.ParseAuthorizedKey(pub)
+//	c.Assert(err, check.IsNil)
+//
+//	// create an admin client
+//	clt, err := s.server.NewClient(TestAdmin())
+//	c.Assert(err, check.IsNil)
+//
+//	// use admin client to create user and role
+//	user, userRole, err := CreateUserAndRole(clt, "user", []string{"user"})
+//	c.Assert(err, check.IsNil)
+//
+//	// get a user client
+//	userClient, err := s.server.NewClient(TestUser(user.GetName()))
+//	c.Assert(err, check.IsNil)
+//
+//	cert, err := userClient.GenerateUserCert(pub, user.GetName(), defaults.CertDuration, "")
+//	c.Assert(err, check.IsNil)
+//	parsedKey, _, _, _, err := ssh.ParseAuthorizedKey(cert)
+//	c.Assert(err, check.IsNil)
+//	parsedCert, _ := parsedKey.(*ssh.Certificate)
+//
+//	fmt.Printf("--> userRole.GetOptions(): %v\n", userRole.GetOptions())
+//	fmt.Printf("--> parsedCert: %v\n", parsedCert.Extensions)
+//
+//	var tests = []struct {
+//		inRoleCertificateFormat   string
+//		inClientCertificateFormat string
+//		outExtensionsCount        int
+//	}{
+//		{},
+//	}
+//
+//	for _, tt := range tests {
+//
+//	}
+//}
+
 // TestClusterConfigContext checks that the cluster configuration gets passed
 // along in the context and permissions get updated accordingly.
 func (s *TLSSuite) TestClusterConfigContext(c *check.C) {

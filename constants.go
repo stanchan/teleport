@@ -237,6 +237,20 @@ const (
 )
 
 const (
+	// CertificateFormatOldSSH is used to make Teleport interoperate with older
+	// versions of OpenSSH.
+	CertificateFormatOldSSH = "oldssh"
+
+	// CertificateFormatStandard is used for normal Teleport operation without any
+	// compatibility modes.
+	CertificateFormatStandard = "standard"
+
+	// CertificateFormatUnspecified is used to check if the format was specified
+	// or not.
+	CertificateFormatUnspecified = ""
+)
+
+const (
 	// TraitInternalPrefix is the role variable prefix that indicates it's for
 	// local accounts.
 	TraitInternalPrefix = "internal"

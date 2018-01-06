@@ -274,6 +274,8 @@ func (s *AuthInitSuite) TestOptions(c *C) {
 	})
 	c.Assert(err, IsNil)
 
+	// upsert role with no values for port forwarding, agent forwarding, and
+	// certificate format
 	role := services.NewAdminRole()
 	role.SetOptions(services.RoleOptions{
 		services.MaxSessionTTL: services.NewDuration(defaults.MaxCertDuration),
@@ -303,4 +305,8 @@ func (s *AuthInitSuite) TestOptions(c *C) {
 	forwardAgent, err := role.GetOptions().GetBoolean(services.ForwardAgent)
 	c.Assert(err, IsNil)
 	c.Assert(forwardAgent, Equals, true)
+
+	certificateFormat, err := role.GetOptions().GetString(services.CertificateFormat)
+	c.Assert(err, IsNil)
+	c.Assert(certificateFormat, Equals, teleport.CertificateFormatStandard)
 }

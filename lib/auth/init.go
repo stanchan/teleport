@@ -409,17 +409,17 @@ func migrateUsers(asrv *AuthServer) error {
 	return nil
 }
 
-// DELETE IN: 2.5.0
-// All users will be migrated to the new roles in Teleport 2.4.0, which means
-// this entire function can be removed in Teleport 2.5.0.
+// DELETE IN: 2.6.0
+// All users will be migrated to the new roles in Teleport 2.5.0, which means
+// this entire function can be removed in Teleport 2.6.0.
 func migrateRoles(asrv *AuthServer) error {
 	roles, err := asrv.GetRoles()
 	if err != nil {
 		return trace.Wrap(err)
 	}
 
-	// loop over all roles and make sure any v3 roles have permit port
-	// forward and forward agent allowed
+	// loop over all roles and make sure any v3 roles have default values for
+	// permit port forward, forward agent, and certificate format
 	for i, _ := range roles {
 		role := roles[i]
 
@@ -431,9 +431,15 @@ func migrateRoles(asrv *AuthServer) error {
 			role.SetOptions(roleOptions)
 		}
 
-		_, err := roleOptions.GetBoolean(services.ForwardAgent)
+		_, err = roleOptions.GetBoolean(services.ForwardAgent)
 		if err != nil {
 			roleOptions.Set(services.ForwardAgent, true)
+			role.SetOptions(roleOptions)
+		}
+
+		_, err = roleOptions.GetString(services.CertificateFormat)
+		if err != nil {
+			roleOptions.Set(services.CertificateFormat, teleport.CertificateFormatStandard)
 			role.SetOptions(roleOptions)
 		}
 
@@ -441,7 +447,7 @@ func migrateRoles(asrv *AuthServer) error {
 		if err != nil {
 			return trace.Wrap(err)
 		}
-		log.Infof("Migrating role: %v to include port_forwarding and forward_agent option.", role.GetName())
+		log.Infof("Migrating role: %v to include defaults for port_forwarding, forward_agent, and cert_format options.", role.GetName())
 	}
 
 	return nil

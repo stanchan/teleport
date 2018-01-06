@@ -340,6 +340,7 @@ func Ping(proxyAddr string, insecure bool, pool *x509.CertPool, connectorName st
 //
 // proxyAddr must be specified as host:port
 func SSHAgentLogin(proxyAddr, user, password, otpToken string, pubKey []byte, ttl time.Duration, insecure bool, pool *x509.CertPool, compatibility string) (*auth.SSHLoginResponse, error) {
+	fmt.Printf("--> SSHAgentSSOLogin: compatibility: %v\n", compatibility)
 	clt, _, err := initClient(proxyAddr, insecure, pool)
 	if err != nil {
 		return nil, trace.Wrap(err)
