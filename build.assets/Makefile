@@ -5,7 +5,7 @@ BBOX=teleport-buildbox:latest
 HOSTNAME=buildbox
 SRCDIR=/gopath/src/github.com/gravitational/teleport
 DOCKERFLAGS=--rm=true -v "$$(pwd)/../":$(SRCDIR) -v /tmp:/tmp -w $(SRCDIR) -h $(HOSTNAME)
-ADDFLAGS=-ldflags -w
+ADDFLAGS=-ldflags \'-w -s -linkmode external -extldflags "-static"\'
 NOROOT=-u $$(id -u):$$(id -g)
 
 #

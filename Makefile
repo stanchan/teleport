@@ -46,13 +46,13 @@ all: $(VERSRC)
 	$(MAKE) -s -j 4 $(BINARIES)
 
 $(BUILDDIR)/tctl: $(LIBS) $(TELEPORTSRC) $(TELEPORTVENDOR)
-	go build -o $(BUILDDIR)/tctl -i $(BUILDFLAGS) ./tool/tctl
+	go build -o $(BUILDDIR)/tctl -a -ldflags '-linkmode external -extldflags "-static -s"' ./tool/tctl
 
 $(BUILDDIR)/teleport: $(LIBS) $(TELEPORTSRC) $(TELEPORTVENDOR)
-	go build -o $(BUILDDIR)/teleport -i $(BUILDFLAGS) ./tool/teleport
+	go build -o $(BUILDDIR)/teleport -a -ldflags '-linkmode external -extldflags "-static -s"' ./tool/teleport
 
 $(BUILDDIR)/tsh: $(LIBS) $(TELEPORTSRC) $(TELEPORTVENDOR)
-	go build -o $(BUILDDIR)/tsh -i $(BUILDFLAGS) ./tool/tsh
+	go build -o $(BUILDDIR)/tsh -a -ldflags '-linkmode external -extldflags "-static -s"' ./tool/tsh
 
 #
 # make full - builds the binary with the built-in web assets and places it 
