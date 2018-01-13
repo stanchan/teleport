@@ -1,4 +1,11 @@
 # Changelog
+## 2.4.1
+
+This release adds Ansible dynamic and static inventory support.
+
+#### New Features
+
+* Ansible dynamic and static inventory support.
 
 ## 2.4.0
 
